@@ -1,25 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
+import React,{useState} from 'react';
 import './App.css';
+import MoviesList from './MovieList';
+import Nav from './Nav';
+import {MovieProvider} from './MovieContext';
 
 function App() {
+  const [movies,setMovies] = useState ([
+    {name: 'Harry',price : '$10', id : 1},
+    {name: 'Own',price : '$20', id : 2},
+    {name: 'Nam Lee',price : '$30', id : 3},
+  ])
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <MovieProvider>
+      <div className="App">
+        <Nav></Nav>        
+        <MoviesList />
+      </div>
+    </MovieProvider>
   );
 }
 
